@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HoundCV – Editor</title>
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="../assets/cv.css">
+  <link rel="stylesheet" href="../assets/editor.css">
+</head>
+<body class="editor" data-mode="advanced">
+  <header class="etop">
+    <a class="brand" href="./"><span class="brand-mark">H</span><span class="brand-text">HoundCV</span></a>
+    <div class="seg" role="tablist" aria-label="Editor mode">
+      <button id="m-simple" role="tab" data-mode="simple">Simple</button>
+      <button id="m-adv" role="tab" data-mode="advanced">Advanced</button>
+    </div>
+    <div class="etop-grow"></div>
+    <div class="eg">
+      <button class="ib" id="undo" title="Undo (Ctrl+Z)" aria-label="Undo">↶</button>
+      <button class="ib" id="redo" title="Redo (Ctrl+Y)" aria-label="Redo">↷</button>
+    </div>
+    <div class="eg zoomg">
+      <button class="ib" id="zout" aria-label="Zoom out">−</button>
+      <button class="ib zl" id="zfit" title="Fit to window">Fit</button>
+      <button class="ib" id="zin" aria-label="Zoom in">+</button>
+    </div>
+    <span class="status" id="status" role="status">Saved</span>
+    <div class="menu-wrap">
+      <button class="btn primary-s" id="export-btn" data-help="export" aria-haspopup="true">Export ▾</button>
+      <div class="pop" id="export-menu" hidden>
+        <button data-act="pdf">PDF – styled</button>
+        <button data-act="pdf-plain">PDF – plain, ATS-friendly</button>
+        <hr>
+        <button data-act="backup">Download backup (.json)</button>
+        <button data-act="restore">Restore from backup…</button>
+        <button data-act="reset">Start a new CV…</button>
+        <p class="pop-note">In the print window choose “Save as PDF”. Layout, colours and selectable text are kept.</p>
+      </div>
+    </div>
+    <input type="file" id="restore-file" accept="application/json,.json" hidden>
+  </header>
+
+  <div class="ework">
+    <aside class="left" id="left" aria-label="Content">
+      <div id="toolbox" class="adv-only">
+        <h3 class="lh">Content blocks</h3>
+        <p class="lnote">Click to add, or drag onto the page.</p>
+        <div class="tools" id="tools"></div>
+        <h3 class="lh">Decoration</h3>
+        <div class="tools" id="tools-decor"></div>
+      </div>
+      <div id="simple-form" class="simple-only"></div>
+    </aside>
+
+    <main class="stage" id="stage"><div class="page-host" id="page-host"></div></main>
+
+    <aside class="right" id="panel" aria-label="Properties">
+      <div class="tabs" id="tabs">
+        <button data-tab="doc" class="on">Document</button>
+        <button data-tab="block" class="adv-only">Block</button>
+        <button data-tab="order" class="adv-only">Order</button>
+        <button data-tab="checks">Checks <i id="badge" class="badge" hidden>0</i></button>
+      </div>
+      <div class="tabbody" id="tabbody"></div>
+    </aside>
+  </div>
+
+  <div class="ctx" id="ctx" hidden></div>
+  <div class="toast" id="toast" role="status"></div>
+  <div id="print-root" aria-hidden="true"></div>
+
+  <script>
+    window.HELPER_OPTS = { wander: false, home: "bottom-left" };
+    window.HELPER_TOPICS = [
+      { id: "add", label: "How do I add a block?", target: "#tools", title: "Add a block", demo: null,
+        text: "Click a block type to add it, or drag it onto the page. It snaps to the grid." },
+      { id: "move", label: "How do I move and snap?", target: "#page-host", title: "Move & snap", demo: null,
+        text: "Drag a block. It snaps to the grid and to other blocks, with guide lines. Drag the corner handles to resize." },
+      { id: "right", label: "What does right-click do?", target: "#page-host", title: "Right-click menu", demo: null,
+        text: "Right-click a block to change its type, choose a frame style, duplicate, lock, reorder layers or delete it." },
+      { id: "document", label: "Page, frame and safe zone", target: "#panel", title: "Document panel", demo: null,
+        text: "The Document tab sets the background, frame, safe zone and corner details like the date and page number." },
+      { id: "export", label: "How do I export a PDF?", target: "#export-btn", title: "Export", demo: null,
+        text: "Press Export, choose a PDF, then pick Save as PDF in the print window. Use the plain version for strict ATS systems." },
+      { id: "order", label: "What is reading order?", target: "#tabs", title: "Reading order", demo: null,
+        text: "Parsers read blocks in this order, not by where they sit. Set it in the Order tab. The plain export follows it too." }
+    ];
+  </script>
+  <script src="../assets/hcv-core.js"></script>
+  <script src="../assets/editor.js"></script>
+  <script src="../assets/helper.js"></script>
+</body>
+</html>

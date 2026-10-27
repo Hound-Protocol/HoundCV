@@ -61,8 +61,13 @@ Field Olive (renamed MGS), Brushed Aluminium, plain light ATS skin.
 4. **ATS + export validation:** text-extraction preview, DOCX, SVG.
 5. **Accounts:** optional login and sync.
 
+## Status (build 2)
+Built and working: landing page, mode choice, shared document model, Simple mode (guided form + live preview + auto layout), Advanced mode (toolbox with click/drag add, millimetre grid snapping with guides, edge/centre snapping, resize handles, right-click menu for type/frame/layers/lock, document panel with skins, colours, font, pattern, frame, safe zone, corner details), reading-order tab, checks tab, undo/redo, browser autosave, JSON backup/restore, styled PDF and plain ATS PDF (via the browser print dialog, text stays selectable and in reading order), Hound Helper (no ears, pointing glove, demo window).
+Not built yet: multi-page CVs (one A4 page for now), PNG/SVG export, import from PDF/DOCX, AI writing help, login/sync, language options.
+Known limit: PDF export uses the browser print dialog ("Save as PDF"); a server-side renderer would give exact page control later.
+
 ## Open decisions
-- Framework for the editor (proposal: Svelte + Vite).
+- Framework: the editor is currently plain JavaScript (no build step) so it runs on GitHub Pages as is. Revisit if it grows.
 - PDF generation: browser print for Phase 1; headless Chromium later for exact output.
 - Languages beyond English.
 - GDPR review before ads or analytics go live.

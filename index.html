@@ -72,38 +72,19 @@
     </div>
   </div>
 
-  <!-- Hound Helper -->
-  <div id="helper" role="complementary" aria-label="Hound Helper">
-    <div class="bubble" id="h-bubble"></div>
-    <div class="demo" id="h-demo" aria-hidden="true">
-      <div class="demo-head"><span>Demo</span><span id="h-demo-title"></span></div>
-      <div class="demo-body" id="h-demo-body"><div class="demo-ph"><i></i></div></div>
-      <div class="demo-cap" id="h-demo-cap"></div>
-    </div>
-    <div class="float">
-      <div class="hand" id="h-hand">
-        <svg viewBox="0 0 46 28" aria-hidden="true"><path d="M2 8h22l6-6 4 4-6 6h20v10H20L8 26 2 20z" fill="#f4d9a8" stroke="#1a1208" stroke-width="2" stroke-linejoin="round"/></svg>
-      </div>
-      <svg class="face" id="h-face" viewBox="0 0 100 100" tabindex="0" role="button" aria-label="Open Hound Helper chat">
-        <circle cx="50" cy="50" r="46" fill="#5be3c0" stroke="#04120e" stroke-width="4"/>
-        <path d="M18 24 L8 4 L36 16 Z M82 24 L92 4 L64 16 Z" fill="#3fc3a2" stroke="#04120e" stroke-width="3" stroke-linejoin="round"/>
-        <g class="blink"><circle cx="35" cy="44" r="9" fill="#fff"/><circle cx="65" cy="44" r="9" fill="#fff"/></g>
-        <circle class="pupil" id="pl" cx="35" cy="44" r="4.5" fill="#04120e"/>
-        <circle class="pupil" id="pr" cx="65" cy="44" r="4.5" fill="#04120e"/>
-        <path d="M32 64 Q50 82 68 64" fill="none" stroke="#04120e" stroke-width="4.5" stroke-linecap="round"/>
-      </svg>
-    </div>
-  </div>
-
-  <section id="helper-chat" aria-label="Hound Helper chat">
-    <div class="chat-head"><span>Hound Helper</span><button class="icon-btn" id="chat-close" aria-label="Close chat">×</button></div>
-    <div class="chat-body" id="chat-body"></div>
-    <form class="chat-input" id="chat-form">
-      <input id="chat-text" placeholder="Ask me anything…" autocomplete="off" aria-label="Ask the Hound Helper">
-      <button class="btn" style="padding:8px 12px" type="submit">Send</button>
-    </form>
-  </section>
-
+  <script>
+    window.HELPER_TOPICS = [
+      { id: "start", label: "How do I start?", target: "#start", title: "Start", demo: null,
+        text: "Press Start building, then pick Simple or Advanced mode. No account needed. Your CV saves in this browser." },
+      { id: "modes", label: "Simple or Advanced?", target: ".features", title: "Modes", demo: null,
+        text: "Simple fills in the layout for you. Advanced lets you drag blocks onto a precise grid and style everything." },
+      { id: "export", label: "How do I export?", target: ".features", title: "Export", demo: null,
+        text: "Export a PDF with selectable text, or a plain version for applicant tracking systems. All free." },
+      { id: "login", label: "Do I need to log in?", target: "#login-open", title: "Login", demo: null,
+        text: "No. Logging in is optional and only adds sync across devices." }
+    ];
+  </script>
+  <script src="assets/main.js"></script>
   <script src="assets/helper.js"></script>
 </body>
 </html>

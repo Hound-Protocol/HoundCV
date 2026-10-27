@@ -1,0 +1,75 @@
+/* Styles for the CV page itself. Used by the editor, the preview and print.
+   Sizes use --mm (one millimetre) so the page is geometrically exact at any zoom.
+   The CV page is never animated. */
+.page { position: relative; flex: none; overflow: hidden; background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.35; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page *, .plain * { box-sizing: border-box; }
+.page.pat-grid  { background-image: linear-gradient(color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px); background-size: calc(7 * var(--mm)) calc(7 * var(--mm)); }
+.page.pat-lines { background-image: repeating-linear-gradient(0deg, color-mix(in srgb, var(--line) 40%, transparent) 0 1px, transparent 1px calc(6 * var(--mm))); }
+.page.pat-dots  { background-image: radial-gradient(color-mix(in srgb, var(--line) 80%, transparent) 1px, transparent 1.2px); background-size: calc(6 * var(--mm)) calc(6 * var(--mm)); }
+
+.blk { position: absolute; overflow: hidden; padding: calc(2 * var(--mm)); }
+.blk h1, .plain h1, .blk h2, .plain h2, .blk h3, .plain h3 { animation: none; transform: none; opacity: 1; max-width: none; font-stretch: normal; }
+.blk h1 { margin: 0 0 .2em; font-size: 2.7em; line-height: 1; letter-spacing: -.01em; text-transform: uppercase; }
+.blk h2 { margin: 0 0 .55em; font-size: 1.15em; letter-spacing: .05em; text-transform: uppercase; line-height: 1.15; }
+.blk h2::after { content: ""; display: block; width: 3.6em; height: .22em; margin-top: .35em; background: var(--accent); }
+.blk h3 { margin: 0; font-size: 1em; line-height: 1.25; }
+.blk p { margin: 0 0 .4em; color: var(--muted); }
+.blk p.job { color: var(--text); font-size: 1.25em; margin-bottom: .6em; }
+.blk ul { margin: .25em 0 0; padding-left: 1.2em; color: var(--muted); }
+.blk li { margin: .2em 0; }
+.blk .entry { margin-bottom: .85em; }
+.blk .eh { display: flex; align-items: baseline; justify-content: space-between; gap: .6em; }
+.blk .date { color: var(--accent); font: .8em ui-monospace, Consolas, monospace; white-space: nowrap; }
+.blk .org { margin: .1em 0 .3em; color: var(--muted); font-weight: 650; }
+.blk .ct { margin: .5em 0; overflow-wrap: anywhere; color: var(--muted); }
+.blk .ct .l { display: block; color: var(--accent); font-size: .72em; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.blk .plainlist { list-style: none; padding: 0; margin: 0; }
+
+.blk.t-line { padding: 0; display: flex; align-items: center; }
+.blk.t-line::before { content: ""; display: block; width: 100%; border-top: calc(.4 * var(--mm)) solid var(--accent); }
+.blk.t-shape { padding: 0; background: color-mix(in srgb, var(--text) 5%, transparent); }
+
+.f-thin { border: calc(.25 * var(--mm)) solid var(--line); }
+.f-panel { background: color-mix(in srgb, var(--text) 6%, transparent); border: calc(.25 * var(--mm)) solid var(--line); clip-path: polygon(0 0, calc(100% - 3 * var(--mm)) 0, 100% calc(3 * var(--mm)), 100% 100%, 0 100%); }
+.f-tag { border-left: calc(.9 * var(--mm)) solid var(--accent); padding-left: calc(3.2 * var(--mm)); }
+.f-bracket {
+  --bl: calc(4 * var(--mm)); --bw: calc(.4 * var(--mm));
+  background:
+    linear-gradient(var(--accent), var(--accent)) top left / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) top left / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--accent), var(--accent)) top right / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) top right / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--accent), var(--accent)) bottom left / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) bottom left / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--accent), var(--accent)) bottom right / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) bottom right / var(--bw) var(--bl) no-repeat;
+}
+
+.pframe { position: absolute; inset: calc(var(--fi) * var(--mm)); pointer-events: none; z-index: 0; }
+.pf-thin { border: calc(.3 * var(--mm)) solid var(--accent); }
+.pf-double { border: calc(.9 * var(--mm)) double var(--accent); }
+.pf-bracket {
+  --bl: calc(10 * var(--mm)); --bw: calc(.6 * var(--mm));
+  background:
+    linear-gradient(var(--accent), var(--accent)) top left / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) top left / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--accent), var(--accent)) top right / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) top right / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--accent), var(--accent)) bottom left / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) bottom left / var(--bw) var(--bl) no-repeat,
+    linear-gradient(var(--accent), var(--accent)) bottom right / var(--bl) var(--bw) no-repeat, linear-gradient(var(--accent), var(--accent)) bottom right / var(--bw) var(--bl) no-repeat;
+}
+.corner { position: absolute; z-index: 90; color: var(--muted); font: calc(2.5 * var(--mm)) ui-monospace, Consolas, monospace; letter-spacing: .1em; text-transform: uppercase; white-space: nowrap; }
+.c-tl { left: calc((var(--fi) + 2) * var(--mm)); top: calc((var(--fi) + 1.5) * var(--mm)); }
+.c-tr { right: calc((var(--fi) + 2) * var(--mm)); top: calc((var(--fi) + 1.5) * var(--mm)); }
+.c-bl { left: calc((var(--fi) + 2) * var(--mm)); bottom: calc((var(--fi) + 1.5) * var(--mm)); }
+.c-br { right: calc((var(--fi) + 2) * var(--mm)); bottom: calc((var(--fi) + 1.5) * var(--mm)); }
+
+/* Plain (ATS-friendly) export: single column, black on white, no decoration */
+.plain { font: 10.5pt/1.4 Arial, Helvetica, sans-serif; color: #000; background: #fff; }
+.plain h1 { margin: 0 0 2pt; font-size: 20pt; line-height: 1.15; letter-spacing: 0; text-transform: none; }
+.plain h2 { margin: 12pt 0 4pt; padding-bottom: 2pt; border-bottom: 1px solid #000; font-size: 11pt; text-transform: uppercase; letter-spacing: .04em; }
+.plain h3 { margin: 0; font-size: 10.5pt; }
+.plain p { margin: 0 0 4pt; }
+.plain .job { font-size: 12pt; }
+.plain ul { margin: 2pt 0 4pt; padding-left: 16pt; }
+.plain .entry { margin-bottom: 6pt; break-inside: avoid; }
+.plain .eh { display: flex; justify-content: space-between; gap: 8pt; }
+.plain .date { white-space: nowrap; }
+.plain .ct .l::after { content: ": "; }
+.plain .ct { display: block; }
+.plain .plainlist { list-style: none; padding: 0; }
+.plain .blk-plain { break-inside: avoid-page; margin-bottom: 4pt; }

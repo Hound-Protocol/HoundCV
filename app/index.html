@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>HoundCV – Editor (in progress)</title>
+  <title>HoundCV – Choose your mode</title>
   <link rel="stylesheet" href="../assets/styles.css">
 </head>
 <body>
@@ -13,17 +13,29 @@
     <a class="btn" href="../">← Back</a>
   </header>
   <main>
-    <section class="hero">
-      <p class="eyebrow">Editor</p>
-      <h1>Choose your <em>mode</em>.</h1>
-      <p class="lead">The editor is under construction. Both modes are planned, see docs/SPEC.md. Meanwhile you can use the original template.</p>
-      <div class="features" style="text-align:left">
-        <article class="card"><span class="tag">Simple mode · soon</span><h3>Guided</h3><p>Answer questions and the editor builds your CV.</p></article>
-        <article class="card"><span class="tag">Advanced mode · soon</span><h3>Block designer</h3><p>Drag, snap and style blocks on a precise page grid.</p></article>
-        <a class="card" href="../legacy/cv-template.html" style="text-decoration:none;color:inherit"><span class="tag">Available now</span><h3>Original template →</h3><p>The editable HTML template this project started from.</p></a>
+    <section class="hero" style="padding-bottom:20px">
+      <p class="eyebrow">Choose your mode</p>
+      <h1 style="max-width:16ch">How do you want to <em>build</em>?</h1>
+      <p class="lead">Both modes edit the same CV. You can switch at any time without losing anything.</p>
+      <div class="features" style="text-align:left;margin-top:30px">
+        <a class="card" href="editor.html?mode=simple" style="text-decoration:none;color:inherit">
+          <span class="tag">Simple mode</span><h3>Fill it in. We lay it out.</h3><p>Answer the sections. The editor arranges spacing, columns and type, and keeps it tidy.</p></a>
+        <a class="card" href="editor.html?mode=advanced" style="text-decoration:none;color:inherit">
+          <span class="tag">Advanced mode</span><h3>Design every block.</h3><p>Drag blocks onto a millimetre grid, snap them in place, right-click for type and frame, and style the whole page.</p></a>
+        <a class="card" id="continue" href="editor.html" style="text-decoration:none;color:inherit;display:none">
+          <span class="tag">Saved in this browser</span><h3>Continue my CV →</h3><p>Pick up where you left off.</p></a>
       </div>
     </section>
   </main>
-  <footer>HOUNDCV · A HOUND PROTOCOL TOOL</footer>
+  <div class="sponsor" style="margin-top:20px"><span class="label">Sponsored</span><span>Sponsor slot available. Keeping HoundCV free to create and export.</span><span></span></div>
+  <footer>HOUNDCV · A HOUND PROTOCOL TOOL · <a href="../legacy/cv-template.html">ORIGINAL TEMPLATE</a></footer>
+  <script>
+    try { if (localStorage.getItem("houndcv.doc.v1")) document.getElementById("continue").style.display = ""; } catch (e) {}
+    window.HELPER_TOPICS = [
+      { id: "simple", label: "Which mode should I pick?", target: ".features", title: "Modes", demo: null,
+        text: "Simple if you want it done fast. Advanced if you want to place and style every block. You can switch later." }
+    ];
+  </script>
+  <script src="../assets/helper.js"></script>
 </body>
 </html>

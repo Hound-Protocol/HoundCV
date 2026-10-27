@@ -3,7 +3,10 @@
 The free CV workshop by Hound Protocol. No account, no watermark, no paywalled export.
 
 - `index.html` – landing page with the Hound Helper
-- `app/` – editor entry (placeholder for now)
+- `app/` – mode choice (`index.html`) and the editor (`editor.html`)
+- `assets/hcv-core.js` – document model, rendering, snapping, auto-layout, checks
+- `assets/editor.js` – editor UI (Simple and Advanced mode)
+- `assets/helper.js` – the Hound Helper
 - `legacy/cv-template.html` – the original editable HTML template
 - `docs/SPEC.md` – product spec and plan
 

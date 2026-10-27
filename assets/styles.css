@@ -1,14 +1,14 @@
 /* HoundCV landing styles. Dark, sharp, high-tech. All motion respects prefers-reduced-motion. */
 :root {
-  --bg: #0b0d10;
-  --bg-2: #11151a;
-  --panel: #151a21;
-  --line: #243038;
+  --bg: #0a0a0a;
+  --bg-2: #111111;
+  --panel: #161616;
+  --line: #2b2b2b;
   --text: #eef2f4;
-  --muted: #9aa8b2;
-  --accent: #5be3c0;      /* signal teal */
-  --accent-2: #c1b56a;    /* muted amber, nod to the original olive skin */
-  --accent-ink: #04120e;
+  --muted: #a3a3a3;
+  --accent: #ff7a1a;      /* orange */
+  --accent-2: #bdbdbd;      /* grey */
+  --accent-ink: #160800;
   --radius: 4px;
   --ease: cubic-bezier(.22, .8, .24, 1);
   --font: "Inter", "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
@@ -177,11 +177,11 @@ footer { padding: 24px 20px 40px; text-align: center; color: var(--muted); font:
 #helper .blink { animation: blink 5s infinite; transform-origin: center; transform-box: fill-box; }
 @keyframes blink { 0%, 94%, 100% { transform: scaleY(1); } 97% { transform: scaleY(.1); } }
 #helper .hand {
-  position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: rotate(var(--angle, 0deg));
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform: rotate(var(--angle, 0deg)) scaleY(var(--flip, 1));
   transition: transform .8s var(--ease), opacity .4s; opacity: 0;
 }
 #helper.pointing .hand { opacity: 1; }
-#helper .hand svg { position: absolute; left: 30px; top: -14px; width: 46px; height: 28px; animation: poke 1s ease-in-out infinite; }
+#helper .hand svg { position: absolute; left: 30px; top: -24px; width: 86px; height: 48px; filter: drop-shadow(0 4px 6px rgba(0,0,0,.5)); animation: poke 1s ease-in-out infinite; }
 @keyframes poke { 50% { transform: translateX(8px); } }
 #helper .bubble {
   position: absolute; bottom: 92px; left: -30px; width: 220px; padding: 10px 12px; font-size: 13px; line-height: 1.4;
@@ -190,6 +190,7 @@ footer { padding: 24px 20px 40px; text-align: center; color: var(--muted); font:
 }
 #helper .bubble.show { opacity: 1; transform: none; }
 #helper.left .bubble { left: auto; right: -30px; }
+#helper.edge .bubble { left: 0; }
 
 /* Demo window: sits on the helper, moves with him */
 #helper .demo {
