@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HoundCV – The free CV workshop</title>
+  <meta name="description" content="Free CV builder with no account, no watermark and no paywalled export. Simple mode for speed, Advanced mode for full control. A Hound Protocol tool.">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">H</span> HoundCV</a>
+    <button class="btn" id="login-open" type="button">Log into HoundCV</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Free CV workshop</p>
+      <h1>Build a CV that <em>snaps</em> into place.</h1>
+      <p class="lead">No account, no watermark, no paywalled export. Let the editor fill it in for you, or drag precise blocks and design every pixel yourself.</p>
+      <div class="cta">
+        <a class="btn primary" id="start" data-help="start" href="app/">Start building <span class="arrow">→</span></a>
+      </div>
+      <p class="fine">NO ACCOUNT · NO WATERMARK · FREE EXPORT</p>
+
+      <div class="stage" aria-hidden="true">
+        <div class="paper">
+          <div class="bar"></div>
+          <div class="name">Your Name</div>
+          <div class="role">Target role</div>
+          <div class="cols">
+            <div><div class="sec"></div><div class="line m"></div><div class="line"></div><div class="line s"></div><div class="sec"></div><div class="line"></div><div class="line m"></div></div>
+            <div><div class="sec"></div><div class="line"></div><div class="line s"></div></div>
+          </div>
+          <div class="guides"></div>
+          <div class="snap-box a"></div>
+          <div class="snap-box b"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <article class="card reveal"><span class="tag">Simple mode</span><h3>Answer, don't design</h3><p>A guided editor fills in layout, type and spacing. You supply the facts, it makes them look sharp.</p></article>
+      <article class="card reveal"><span class="tag">Advanced mode</span><h3>Blocks with precision</h3><p>Drag blocks onto the page and they snap to a millimetre grid. Right-click to change type, frame and style.</p></article>
+      <article class="card reveal"><span class="tag">Document</span><h3>Control the whole page</h3><p>Background, frame, safe zone, corner details such as date and page number. All in one panel.</p></article>
+      <article class="card reveal"><span class="tag">Export</span><h3>Free, readable, honest</h3><p>PDF with selectable text, a picture export, and a plain version for applicant tracking systems.</p></article>
+    </section>
+  </main>
+
+  <aside class="sponsor" aria-label="Sponsor">
+    <span class="label">Sponsored</span>
+    <span>Sponsor slot available. Keeping HoundCV free to create and export.</span>
+    <a href="mailto:hello@houndprotocol.example" class="btn" style="padding:6px 12px;font-size:13px">Advertise</a>
+  </aside>
+  <footer>HOUNDCV · A HOUND PROTOCOL TOOL</footer>
+
+  <!-- Login (providers wired up later) -->
+  <div class="modal" id="login" role="dialog" aria-modal="true" aria-labelledby="login-title">
+    <div class="modal-box">
+      <button class="icon-btn" id="login-close" aria-label="Close">×</button>
+      <h2 id="login-title">Log into HoundCV</h2>
+      <p>Optional. Logging in syncs your CVs across devices. You can always build without it.</p>
+      <div class="providers">
+        <button disabled>Google</button><button disabled>GitHub</button>
+        <button disabled>Discord</button><button disabled>Microsoft</button>
+        <button disabled>Apple</button><button disabled>LinkedIn</button>
+        <button disabled>Email link</button><button disabled>Passkey</button>
+      </div>
+      <p class="soon">LOGIN IS COMING SOON</p>
+    </div>
+  </div>
+
+  <!-- Hound Helper -->
+  <div id="helper" role="complementary" aria-label="Hound Helper">
+    <div class="bubble" id="h-bubble"></div>
+    <div class="demo" id="h-demo" aria-hidden="true">
+      <div class="demo-head"><span>Demo</span><span id="h-demo-title"></span></div>
+      <div class="demo-body" id="h-demo-body"><div class="demo-ph"><i></i></div></div>
+      <div class="demo-cap" id="h-demo-cap"></div>
+    </div>
+    <div class="float">
+      <div class="hand" id="h-hand">
+        <svg viewBox="0 0 46 28" aria-hidden="true"><path d="M2 8h22l6-6 4 4-6 6h20v10H20L8 26 2 20z" fill="#f4d9a8" stroke="#1a1208" stroke-width="2" stroke-linejoin="round"/></svg>
+      </div>
+      <svg class="face" id="h-face" viewBox="0 0 100 100" tabindex="0" role="button" aria-label="Open Hound Helper chat">
+        <circle cx="50" cy="50" r="46" fill="#5be3c0" stroke="#04120e" stroke-width="4"/>
+        <path d="M18 24 L8 4 L36 16 Z M82 24 L92 4 L64 16 Z" fill="#3fc3a2" stroke="#04120e" stroke-width="3" stroke-linejoin="round"/>
+        <g class="blink"><circle cx="35" cy="44" r="9" fill="#fff"/><circle cx="65" cy="44" r="9" fill="#fff"/></g>
+        <circle class="pupil" id="pl" cx="35" cy="44" r="4.5" fill="#04120e"/>
+        <circle class="pupil" id="pr" cx="65" cy="44" r="4.5" fill="#04120e"/>
+        <path d="M32 64 Q50 82 68 64" fill="none" stroke="#04120e" stroke-width="4.5" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+
+  <section id="helper-chat" aria-label="Hound Helper chat">
+    <div class="chat-head"><span>Hound Helper</span><button class="icon-btn" id="chat-close" aria-label="Close chat">×</button></div>
+    <div class="chat-body" id="chat-body"></div>
+    <form class="chat-input" id="chat-form">
+      <input id="chat-text" placeholder="Ask me anything…" autocomplete="off" aria-label="Ask the Hound Helper">
+      <button class="btn" style="padding:8px 12px" type="submit">Send</button>
+    </form>
+  </section>
+
+  <script src="assets/helper.js"></script>
+</body>
+</html>
