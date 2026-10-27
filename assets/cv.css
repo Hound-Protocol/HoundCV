@@ -73,3 +73,13 @@
 .plain .ct { display: block; }
 .plain .plainlist { list-style: none; padding: 0; }
 .plain .blk-plain { break-inside: avoid-page; margin-bottom: 4pt; }
+
+/* Zone layout: header / left / right / footer. Blocks in a zone share its space. */
+.zones { position: absolute; display: grid; gap: calc(var(--zg) * var(--mm)); z-index: 2; }
+.zone { position: relative; display: flex; gap: calc(var(--zg) * var(--mm)); min-width: 0; min-height: 0; }
+.zone[data-dir="column"] { flex-direction: column; }
+.zone[data-dir="row"] { flex-direction: row; align-items: stretch; }
+.zones .zb { position: relative; min-width: 0; min-height: 0; overflow: hidden; }
+.blk.vline { padding: 0; justify-content: center; }
+.blk.vline::before { width: 0; height: 100%; border-top: 0; border-left: calc(.4 * var(--mm)) solid var(--accent); }
+.zl, .dz { display: none; }
